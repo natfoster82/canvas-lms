@@ -1,0 +1,27 @@
+development:
+  address: "smtp.example.com"
+  port: "25"
+  user_name: "user"
+  password: "password"
+  authentication: "plain" # plain, login, or cram_md5
+  domain: "example.com"
+  outgoing_address: "canvas@example.com"
+  default_name: "Instructure Canvas"
+
+# or to use sendmail --
+#
+# development:
+#   delivery_method: "sendmail"
+
+test:
+  delivery_method: "test"
+
+production:
+  address: <%= ENV['MAIL_SERVER'] %>
+  port: <%= ENV['MAIL_PORT'] %>
+  user_name: <%= ENV['MAIL_USER'] %>
+  password: <%= ENV['MAIL_PASSWORD'] %>
+  authentication: "plain" # plain, login, or cram_md5
+  domain: <%= ENV['MAIL_DOMAIN'] %>
+  outgoing_address: <%= ENV['MAIL_ADDRESS'] %>
+  default_name: "Caveon Canvas"

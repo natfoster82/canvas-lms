@@ -1,19 +1,17 @@
 # See doc/docker/README.md or https://github.com/instructure/canvas-lms/tree/master/doc/docker
 version: '2'
 services:
-  web: &WEB
-    build:
-      context: .
-    links:
-      - postgres
-      - redis
-
-  jobs:
-    <<: *WEB
-    command: bundle exec script/delayed_job run
-
-  postgres:
-    build: ./docker-compose/postgres
-
-  redis:
-    image: redis:alpine
+  web:
+    image: caveon/canvas:dev
+    environment:
+      DB_NAME: canvas
+      DB_HOST: localhost
+      DB_USER: canvas
+      DB_PASSWORD: canvas
+      MAIL_SERVER: west.exch023.serverdata.net
+      MAIL_PORT: 587
+      MAIL_USER: no-reply@caveon.com
+      MAIL_PASSWORD: 0#45bQ
+      MAIL_DOMAIN: caveon.com
+      MAIL_ADDRESS: no-reply@caveon.com
+      ENCRYPTION_KEY: fdskjaiyudsahkjlsdafhkhjkhjdfhjlshhfhkdlkfhsuovcuhhjkvhjkdsafyu
